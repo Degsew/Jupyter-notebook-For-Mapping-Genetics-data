@@ -11,17 +11,17 @@ import matplotlib.pyplot as plt
 import geopandas as gpd
 import numpy as np
 # Assuming you have a GeoDataFrame 'shp' that contains country borders
-shp = gpd.read_file('C:/Users/degse/OneDrive - uniroma1.it/Documents/Research Hub/DNA Data/Data Analysis/Bioinformatics Tef/Stuff for Degsew/MapsByPedroAndHugo/Raster/continentsshp06.shp')
+shp = gpd.read_file('C:/Users/Raster/continentsshp06.shp')
 
 
 # Set the path to your CSV file
-csv_path = r"C:\Users\degse\OneDrive - uniroma1.it\Documents\Research Hub\DNA Data\Data Analysis\Bioinformatics Finger millet\FingerMilletOnly\FM_K.csv"
+csv_path = r"C:\Users\FM_K.csv"
 # Load data into a DataFrame
 final = pd.read_csv(csv_path)
 
 # Display the first few rows of the DataFrame
 print(final.head())
-shapefile_path = r"C:\Users\degse\OneDrive - uniroma1.it\Documents\Research Hub\DNA Data\Data Analysis\Bioinformatics Tef\Stuff for Degsew\MapsByPedroAndHugo\Raster\continentsshp06.shp"
+shapefile_path = r"C:\Users\Raster\continentsshp06.shp"
 countries = gpd.read_file(shapefile_path)
 final['Latitude'] = pd.to_numeric(final['Latitude'])
 final['Longitude'] = pd.to_numeric(final['Longitude'])
@@ -54,13 +54,13 @@ cmap = 'RdBu'
  # Choose a diverging colormap
 plt.pcolormesh(grid_x, grid_y, grid_z, shading='auto', cmap=cmap, vmin=grid_z.min(), vmax=grid_z.max())
 plt.colorbar(label='K=3')
-shp = shp = gpd.read_file(r'C:\Users\degse\OneDrive - uniroma1.it\Documents\Research Hub\DNA Data\Data Analysis\Bioinformatics Tef\Stuff for Degsew\MapsByPedroAndHugo\Raster\continentsshp06.shp')
+shp = shp = gpd.read_file(r'C:\Users\Raster\continentsshp06.shp')
 plt.xlim([final['Longitude'].min() - margin, final['Longitude'].max() + margin])
 plt.ylim([final['Latitude'].min() - margin, final['Latitude'].max() + margin])
 plt.scatter(final['Longitude'], final['Latitude'], c='black', marker='.', s=3)
 shp.boundary.plot(ax=plt.gca(), linewidth=1, color='black')
 # Save the plot
-output_path_tiff = r'C:\Users\degse\OneDrive - uniroma1.it\Documents\Research Hub\DNA Data\Data Analysis\Bioinformatics Finger millet\FingerMilletOnly\K=3_figure.tif'
+output_path_tiff = r'C:\Users\\K=3_figure.tif'
 
 plt.savefig(output_path_tiff, format='tiff', dpi=300)
 
